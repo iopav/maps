@@ -31,13 +31,14 @@
 #v
 # {'大船', '船尾', '海边废墟', '厕所', '船头', '木屋废墟', '木屋', '玉米地', '小船', '大门废墟', '双十一', '中场'}
 import data
-a=[]
-for i in data.village.values():
-    a=a+i
-print(set(a))
-b=[]
-# for j in data.red_church.values():
-#     b=b+j
-# print(set(b))
+# a=[]
+# for i in data.village.values():
+#     a=a+i
+# print(set(a))
+# b=[]
+# # for j in data.red_church.values():
+# #     b=b+j
+# # print(set(b))
+print(data.hospital.keys())
 
 

@@ -536,6 +536,8 @@ class Ui_MainWindow(object):
         self.moon_river_2.hide()#月亮河
         self.military_factory_2.hide()#军工厂
 
+
+
         self.retranslateUi(MainWindow)
         self.village.toggled['bool'].connect(self.village_2.setVisible) # type: ignore
         self.military_factory.toggled['bool'].connect(self.military_factory_2.setVisible) # type: ignore
@@ -546,7 +548,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "地图辅助©github.com/iopav"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "富内斯@github.com/iopav"))
         self.maps.setTitle(_translate("MainWindow", "地图"))
         self.military_factory.setText(_translate("MainWindow", "军工厂"))
         self.red_church.setText(_translate("MainWindow", "红教堂"))

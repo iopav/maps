@@ -26,6 +26,8 @@
 
 其余地图还没实现，因为我用不着
 
+目录下有一个保存地图的文件夹还没传一传就大小上限我真服了
+
 
 
 ### **功能**
@@ -59,6 +61,7 @@
 - [ ] 解决中文路径的潜在风险
 - [ ] QMimeDatabase: Error loading internal MIME data
 - [ ] An error has been encountered at line 1 of <internal MIME data>: Premature end of document.
+- [ ] 打包exe，成功通过试用期的话
 
 
 

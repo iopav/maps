@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys
+import sys,os
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow,QApplication
 from Ui_map_assistant import Ui_MainWindow  #导入你写的界面类
@@ -26,6 +26,7 @@ def cv_imread(path):
     #import cv2 as cv
     img=cv.imdecode(np.fromfile(path,dtype=np.uint8),-1)
     return img
+
 def ysf_slot(myWin):
     
     gb=getattr(myWin,rb_list[0]+"_2")
@@ -41,7 +42,7 @@ def ysf_slot(myWin):
         # QtWidgets.QMessageBox.information(myWin,"ERROR","不要选两个")
         print("two born")
         return
-    path=(dir+"\\"+rb_list[0]+"\\"+killer_born[0]+".png")
+    path=(dir+"\\"+rb_list[0]+"\\"+killer_born[0]+"ysf.png")
     # path=[]
     # for kb in killer_born:
     #     path.append(dir+"\\"+rb_list[0]+"\\"+kb)
@@ -50,17 +51,34 @@ def ysf_slot(myWin):
     #     imgs.append(cv.imread(p))
     print(path)
     img=cv_imread(path)
-    cv.namedWindow("ysf",0)
-    cv.resizeWindow("ysf", 300, 300)
-    cv.imshow("ysf",img)
-    cv.waitKey(0)
+    cv.namedWindow(killer_born[0],0)
+    cv.moveWindow(killer_born[0], 0, 150)
+    cv.resizeWindow(killer_born[0], 300, 300)
+    cv.imshow(killer_born[0],img)
+    
+    video_path=dir+"\\video\\"+rb_list[0]+"\\"+data.ysf[rb_list[0]][killer_born[0]]+".mp4"
+    cap = cv.VideoCapture(video_path)
+    while True:
+        ret, frame = cap.read()
+        cv.namedWindow("ysfv",0)
+        cv.resizeWindow("ysfv", 400, 300)
+        cv.imshow("ysfv", frame)
+        
+        fps = cap.get(cv.CAP_PROP_FPS)
+        if cv.waitKey(20) & 0xFF == 27:
+            break
+        if not ret:
+            break
+    # cv.waitKey(0)
+    cap.release()
     cv.destroyAllWindows()
+    
     
 def cellar_slot():
     path=dir+"\\cellar\\"+rb_list[0]+".jpg"
     img=cv_imread(path)
     cv.namedWindow("cellar",0)
-    cv.resizeWindow("cellar", 300, 300)
+    cv.resizeWindow("cellar", 300, 150)
     cv.imshow("cellar",img)
     cv.waitKey(0)
     cv.destroyAllWindows()
@@ -91,13 +109,16 @@ def human_slot(myWin):
     maplist=which_map(human_born)
 
     if len(maplist)>1:
+        i=0
         for m in maplist:
             p=dir+"\\"+rb_list[0]+"\\"+m+".png"
             # imgs.append(cv_imread(p))
             imgs=cv_imread(p)
             cv.namedWindow(m,0)
             cv.resizeWindow(m, 300, 300)
+            cv.moveWindow(m, 300*i, 150)
             cv.imshow(m,imgs)
+            i=+1
         cv.waitKey(0)
         cv.destroyAllWindows()
     elif len(maplist)==1:
@@ -113,24 +134,28 @@ def human_slot(myWin):
         return
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    myWin = MyMainWindow()
-    myWin.show()
-    #加入信号和槽连接
-
-
-
-    # children=myWin.frame.children()
-    # print(children)
-    radioButtons=myWin.maps.findChildren(QtWidgets.QRadioButton)
-    for rb in radioButtons:
-        rb.toggled['bool'].connect(partial(rb_slot,rb.objectName(),rb_list))
     try:
+        app = QApplication(sys.argv)
+        myWin = MyMainWindow()
+        myWin.show()
+        #加入信号和槽连接
+        
+        radioButtons=myWin.maps.findChildren(QtWidgets.QRadioButton)
+        for rb in radioButtons:
+            rb.toggled['bool'].connect(partial(rb_slot,rb.objectName(),rb_list))
+    
         myWin.ysf.clicked.connect(partial(ysf_slot, myWin))
         myWin.human.clicked.connect(partial(human_slot, myWin))
         myWin.cellar.clicked.connect(cellar_slot)
+        # print(app.exec_())
+        os._exit(app.exec_())
+        
+        
     except Exception as e:
         repr(e)
         exit(0)
-    sys.exit(app.exec_())
+    finally:
+        sys.exit(app.exec_())
 
+   
+    
