@@ -13,6 +13,16 @@
 直接解压到项目目录下
 
 2.运行main.py
+### **使用说明**
+
+1.克隆本仓库到本地，需要opencv等支持,requirements正在整理
+
+1.5下载资源文件包括录像图片等 链接：https://pan.baidu.com/s/1EYbVseN30h_O5fjr_gyWug?pwd=r7u4 
+提取码：r7u4
+
+直接解压到项目目录下
+
+2.运行main.py
 
 ### **记录**
 
