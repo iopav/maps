@@ -517,16 +517,10 @@ class Ui_MainWindow(object):
         self.human = QtWidgets.QPushButton(self.centralwidget)
         self.human.setObjectName("human")
         self.horizontalLayout.addWidget(self.human)
-        self.ysf_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.ysf_2.setObjectName("ysf_2")
-        self.horizontalLayout.addWidget(self.ysf_2)
         self.ysf = QtWidgets.QPushButton(self.centralwidget)
         self.ysf.setObjectName("ysf")
         self.horizontalLayout.addWidget(self.ysf)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout.addWidget(self.label_3)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 540, 22))
@@ -535,12 +529,14 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        
+
         self.village_2.hide()#村
         self.hospital_2.hide()#医院
         self.red_church_2.hide()#教堂
         self.moon_river_2.hide()#月亮河
         self.military_factory_2.hide()#军工厂
+
+
 
         self.retranslateUi(MainWindow)
         self.village.toggled['bool'].connect(self.village_2.setVisible) # type: ignore
@@ -552,7 +548,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Funes beta v1.1©Ez"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "富内斯@github.com/iopav"))
         self.maps.setTitle(_translate("MainWindow", "地图"))
         self.military_factory.setText(_translate("MainWindow", "军工厂"))
         self.red_church.setText(_translate("MainWindow", "红教堂"))
@@ -667,6 +663,4 @@ class Ui_MainWindow(object):
         self.checkBox_59.setText(_translate("MainWindow", "海边"))
         self.cellar.setText(_translate("MainWindow", "地窖"))
         self.human.setText(_translate("MainWindow", "人"))
-        self.ysf_2.setText(_translate("MainWindow", "屠夫"))
         self.ysf.setText(_translate("MainWindow", "约瑟夫"))
-        self.label_3.setText(_translate("MainWindow", "感谢b站@芝士晨阳来了@盒饭R第五人格@冈易第五人格提供的地图素材！"))

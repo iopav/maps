@@ -524,9 +524,6 @@ class Ui_MainWindow(object):
         self.ysf.setObjectName("ysf")
         self.horizontalLayout.addWidget(self.ysf)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout.addWidget(self.label_3)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 540, 22))
@@ -552,7 +549,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Funes beta v1.1©Ez"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "富内斯©iopav"))
         self.maps.setTitle(_translate("MainWindow", "地图"))
         self.military_factory.setText(_translate("MainWindow", "军工厂"))
         self.red_church.setText(_translate("MainWindow", "红教堂"))
@@ -669,4 +666,3 @@ class Ui_MainWindow(object):
         self.human.setText(_translate("MainWindow", "人"))
         self.ysf_2.setText(_translate("MainWindow", "屠夫"))
         self.ysf.setText(_translate("MainWindow", "约瑟夫"))
-        self.label_3.setText(_translate("MainWindow", "感谢b站@芝士晨阳来了@盒饭R第五人格@冈易第五人格提供的地图素材！"))

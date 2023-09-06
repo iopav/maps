@@ -49,36 +49,67 @@ def ysf_slot(myWin):
     # imgs=[]
     # for p in path:
     #     imgs.append(cv.imread(p))
-    print(path)
+    
     img=cv_imread(path)
-    cv.namedWindow(killer_born[0],0)
-    cv.moveWindow(killer_born[0], 0, 150)
-    cv.resizeWindow(killer_born[0], 300, 300)
-    cv.imshow(killer_born[0],img)
+    winname=killer_born[0]+"ysf"
+    cv.namedWindow(winname,0)
+    cv.moveWindow(winname, 0, 150)
+    cv.resizeWindow(winname, 300, 300)
+    cv.imshow(winname,img)
     
     video_path=dir+"\\video\\"+rb_list[0]+"\\"+data.ysf[rb_list[0]][killer_born[0]]+".mp4"
+    # print(video_path)
     cap = cv.VideoCapture(video_path)
-    while True:
+    while cap.isOpened():
         ret, frame = cap.read()
+        if  not ret:
+            # cap.release()
+            break
         cv.namedWindow("ysfv",0)
         cv.resizeWindow("ysfv", 400, 300)
         cv.imshow("ysfv", frame)
         
-        fps = cap.get(cv.CAP_PROP_FPS)
-        if cv.waitKey(20) & 0xFF == 27:
+        if cv.waitKey(18) & 0xFF == 27:
+            # cap.release()
             break
-        if not ret:
-            break
-    # cv.waitKey(0)
+        
+
+        
+    print("break")
+    cv.waitKey(0)#第一次暂停 第二次退出
     cap.release()
     cv.destroyAllWindows()
     
+def tf_slot(myWin):
+    gb=getattr(myWin,rb_list[0]+"_2")
+    
+    grid=gb.findChild(QtWidgets.QGridLayout,rb_list[0]+"_2_killer")
+    killer_born=[]
+    for c in range(grid.count()):
+        cb=grid.itemAt(c).widget()
+        if cb.isChecked():
+            killer_born.append(cb.text())
+    if len(killer_born)>1 or len(killer_born)==0:
+        print("two born")
+        return
+    path=(dir+"\\"+rb_list[0]+"\\"+killer_born[0]+"ysf.png")
+
+    
+    img=cv_imread(path)
+    winname=killer_born[0]+"ysf"
+    cv.namedWindow(winname,0)
+    # cv.moveWindow(winname, 0, 150)
+    cv.resizeWindow(winname, 300, 300)
+    cv.imshow(winname,img)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
     
 def cellar_slot():
     path=dir+"\\cellar\\"+rb_list[0]+".jpg"
     img=cv_imread(path)
     cv.namedWindow("cellar",0)
-    cv.resizeWindow("cellar", 300, 150)
+    cv.resizeWindow("cellar", 300, 300)
     cv.imshow("cellar",img)
     cv.waitKey(0)
     cv.destroyAllWindows()
@@ -147,6 +178,7 @@ if __name__ == "__main__":
         myWin.ysf.clicked.connect(partial(ysf_slot, myWin))
         myWin.human.clicked.connect(partial(human_slot, myWin))
         myWin.cellar.clicked.connect(cellar_slot)
+        myWin.ysf_2.clicked.connect(partial(tf_slot, myWin))
         # print(app.exec_())
         os._exit(app.exec_())
         

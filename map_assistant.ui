@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>540</width>
-    <height>1091</height>
+    <height>1109</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>地图辅助©Ez</string>
+   <string>Funes beta v1.1©Ez</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -1006,6 +1006,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="ysf_2">
+        <property name="text">
+         <string>屠夫</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="ysf">
         <property name="text">
          <string>约瑟夫</string>
@@ -1013,6 +1020,13 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>感谢b站@芝士晨阳来了@盒饭R第五人格@冈易第五人格提供的地图素材！</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
